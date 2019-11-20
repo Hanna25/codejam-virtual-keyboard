@@ -286,6 +286,7 @@ function createCapsLock(key) {
 function createEnter(key) {
   let enter = createKey(key);
   enter.className += " enter";
+  document.write("\n");
   return enter;
 }
 function createUpArrow(key) {
