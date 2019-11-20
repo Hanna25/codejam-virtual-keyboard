@@ -162,6 +162,7 @@ let keydownFunctions = {
                           "AltLeft": doDownAltLogic,
                           "ControlRight": doDownCtrlLogic,
                           "ControlLeft": doDownCtrlLogic,
+                          "CapsLock" : doUpCapsLock
                        }
 let keyupFunctions = {
                         "ShiftRight": doUpShiftLogic,
@@ -171,14 +172,15 @@ let keyupFunctions = {
                         "ControlRight": doUpCtrlLogic,
                         "ControlLeft": doUpCtrlLogic,
                      }
+let divButtons = [];        
+
 document.addEventListener('keydown', function(event) {
-  console.log(event.code)
   if (keydownFunctions.hasOwnProperty(event.code)) {
     keydownFunctions[event.code]();
+
   }  
 });
 document.addEventListener('keyup', function(event) {
-  console.log(event.code)
   if (keyupFunctions.hasOwnProperty(event.code)) {
     keyupFunctions[event.code]();
   }  
@@ -217,8 +219,24 @@ function doUpAltLogic() {
 function doUpCtrlLogic() {
   statusSwitching = false;
 }
+function doUpCapsLock() {
+  divButtons.forEach(function(div) {
+    if (div.children[0].classList.contains("on")) {
+      div.children[0].classList.remove("on")
+      div.children[0].classList.add("off")
+      div.children[1].classList.remove("off")
+      div.children[1].classList.add("on")
+    } else {
+      div.children[0].classList.remove("off")
+      div.children[0].classList.add("on")
+      div.children[1].classList.remove("on")
+      div.children[1].classList.add("off")
+    }
+  });
+}
+
 function createKey(key) {
-  let button = document.createElement('div');
+   let button = document.createElement('div');
   button.className = 'button';
   let span = document.createElement('span');
   span.className = 'on'
@@ -235,6 +253,7 @@ function createSymbolKey(key) {
   symbolKey.addEventListener('click', function(event) {
     textarea.value = textarea.value + event.target.innerText;
   });
+  divButtons.push(symbolKey);
   return symbolKey;
 }
 function createBackspase(key) {
@@ -281,6 +300,9 @@ function createTab(key) {
 function createCapsLock(key) {
   let capsLock = createKey(key);
   capsLock.className += " cl";
+  capsLock.addEventListener('click', function(event) {
+    doUpCapsLock();
+  });
   return capsLock;
 }
 function createEnter(key) {
