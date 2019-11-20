@@ -1,0 +1,65 @@
+#result {
+  display: block;
+  width: 800px;
+  height: 300px;
+  margin: 0 auto 10px;
+  padding: 10px;
+  font-size: 18px;
+  border: 2px solid #444;
+}
+
+.wrapper {
+  width: 722px;
+  margin: 0 auto;
+}
+.row {
+  display: flex;
+  height: 40px;
+  margin-bottom: 8px;
+}
+.button {
+  border-radius: 3px;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  cursor: pointer;
+  text-align: center;
+  flex-direction: row;
+  margin-left: 6px;
+  background-color: #3a424e;
+  color: white;
+  border: 1px solid #555555;
+}
+.button:hover {
+  background-color: white;
+  color: black;
+}
+.backspace {
+  background-color: #1c232e;
+  width: 100px;
+}
+.space {
+  width: 330px;
+}
+.shiftright, .shiftleft, .cl, .enter {
+  width: 100px;
+  background: #1c232e;
+}
+.controlleft, .win, .altleft, .altright, .controlright, .arrow {
+  background: #1c232e;
+}
+.tab, .delete {
+  width: 50px;
+  background: #1c232e;
+}
+.off {
+  display: none;
+}
+
+
+
+
+
+
+
+
